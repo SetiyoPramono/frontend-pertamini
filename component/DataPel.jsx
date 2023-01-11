@@ -1,5 +1,4 @@
-// @ts-nocheck
-
+import { Row, Col, Table, Card, CardTitle, CardBody } from "reactstrap";
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import axios from 'axios'
@@ -12,7 +11,7 @@ const client = new ApolloClient({
     cache: new InMemoryCache()
 })
 
-const DataPelanggan = ({data}) => {
+const TablePelanggan = ({data}) => {
     const [message, setMessage] = useState(false)
     const router = useRouter()
     
@@ -36,25 +35,29 @@ const DataPelanggan = ({data}) => {
         }
         router.push('admin/mahasiswa/datamahasiswa')
     }
-    
-    return ( 
-        <div style={{marginLeft : "50px"}}>
-            <h3>Data Pelanggan/ Agen</h3>
-            <table className = "table">
-                <thead>
-                    <tr>
-                        <th>Kode Agen</th>
-                        <th>Nama</th>
-                        <th>Tanggal</th>
-                        <th>Nomor Hp</th>
-                        <th>Alamat</th>
-                        <th>Product</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                { data.map((plg, idx) => (
+  return (
+    <Row>
+      <Col lg="12">
+        <Card>
+          <CardTitle tag="h6" className="border-bottom p-3 mb-0">
+            <i className="bi bi-card-text me-2"> </i>
+            Data Agent
+          </CardTitle>
+          <CardBody className="text-center">
+            <Table bordered>
+              <thead>
+                <tr>
+                  <th>Kode Agen</th>
+                  <th>Nama</th>
+                  <th>Tanggal</th>
+                  <th>Nomer Hp</th>
+                  <th>Alamat</th>
+                  <th>Product</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+              { data.map((plg, idx) => (
                     <tr key ={idx}>
                         
                             <td>
@@ -82,64 +85,38 @@ const DataPelanggan = ({data}) => {
                                         nomor_hp:plg.attributes.nomor_hp
                                     }
                                 }}>
-                                    <a>Transkrip</a>
+                                    <a ><i className="bi bi-eye-fill me-2"> </i></a>
                                 </Link>
                             </td>
-                            <td>
-                                 <Link href={
-                                    {pathname:'/admin/mahasiswa/history',
-                                        query: {kode_agen: plg.attributes.kode_agen}
-                                    }
-                                 }
-                                 >
-                                    <a>History</a>
-                                 </Link>
-                            </td>
+                            
                             <td>
                                 <div className="d-flex justify-content-between">
-                                    <Link href={`/admin/mahasiswa/updatemahasiswa?kode_agen=${plg.kode_agen}
-                                        &nama=${plg.nama}&angkatan=${plg.angkatan}
-                                        &nomor_hp=${plg.nomor_hp}`}
+                                    
+                                    <Link href={`/admin/mahasiswa-gql/updatemahasiswa?id=${plg.id}&kode_agen=${plg.attributes.kode_agen}&nama=${plg.attributes.nama}&angkatan=${plg.attributes.angkatan}&nomor_hp=${plg.attributes.nomor_hp}`}
                                     >
                                         <a>Edit</a>
                                     </Link>
-                                    <Link href={`/admin/mahasiswa-gql/updatemahasiswa?id=${plg.id}&kode_agen=${plg.attributes.kode_agen}&nama=${plg.attributes.nama}&angkatan=${plg.attributes.angkatan}&nomor_hp=${plg.attributes.nomor_hp}`}
-                                    >
-                                        <a>Edit gql</a>
-                                    </Link>
 
-                                    {/* <Link href={
-                                       { pathname : '/admin/updatemahasiswa', 
-                                         query : {kode_agen : plg.kode_agen, nama : plg.nama, angkatan : plg.angkatan, nomor_hp : plg.nomor_hp}
-                                       }
-                                        }
-                                    >
-                                        <a>Edit 2</a>
-                                    </Link> */}
-
-                                    <button 
-                                        className = "btn btn-danger btn-sm"
-                                        value = {plg.kode_agen}
-                                        onClick={(e)=>hapusMahasiswa(e.target.value)}
-                                    >
-                                            Hapus
-                                    </button>
                                     <button 
                                         className = "btn btn-danger btn-sm"
                                         value = {plg.kode_agen}
                                         onClick={(e)=>hapusMahasiswaGql(plg.id, plg.attributes.kode_agen)}
                                     >
-                                            Hapus-gql
+                                            Hapus
                                     </button>
                                 </div>
                             </td>
                     </tr>
                     ))
                 }
-                </tbody>
-            </table>
-        </div>
-     );
-}
+              </tbody>
+            </Table>
+          </CardBody>
+        </Card>
+      </Col>
+      
+    </Row>
+  );
+};
 
-export default DataPelanggan;
+export default TablePelanggan;

@@ -1,5 +1,6 @@
 import React from 'react';
-import DataPelanggan from '../../component/DataPelanggan'
+// import DataPelanggan from '../../component/DataPelanggan'
+import TablePelanggan from '../../component/DataPel'
 // import AdminLayout from '../../../components/admin/AdminLayout';
 // import MahasiswaBykode_agen from '../../../components/admin/mahasiswa/MahasiswaBykode_agen';
 
@@ -12,7 +13,7 @@ function datamahasiswa({ agens }) {
     return (
         <div>
                 <div className="container">
-                    <DataPelanggan data={agens.data} />
+                    <TablePelanggan data={agens.data} />
                 </div>
         </div>
     );

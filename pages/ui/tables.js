@@ -3,13 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import { useState } from 'react'
-import {ApolloClient, InMemoryCache, gql} from '@apollo/client';
 
-
-const client = new ApolloClient({
-    uri: 'http://localhost:1337/graphql',
-    cache: new InMemoryCache()
-})
 
 const Tables = () => {
   return (
