@@ -40,6 +40,11 @@ const navigation = [
     icon: "bi bi-layout-split",
   },
   {
+    title: "Table",
+    href: "/ui/pelanggan",
+    icon: "bi bi-layout-split",
+  },
+  {
     title: "Forms",
     href: "/ui/forms",
     icon: "bi bi-textarea-resize",

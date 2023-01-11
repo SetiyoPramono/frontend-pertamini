@@ -1,23 +1,24 @@
 import { Row, Col, Table, Card, CardTitle, CardBody } from "reactstrap";
-import ProjectTables from "../../src/components/dashboard/ProjectTable";
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import axios from 'axios'
+import { useState } from 'react'
+import {ApolloClient, InMemoryCache, gql} from '@apollo/client';
+
+
+const client = new ApolloClient({
+    uri: 'http://localhost:1337/graphql',
+    cache: new InMemoryCache()
+})
 
 const Tables = () => {
   return (
     <Row>
-      {/* --------------------------------------------------------------------------------*/}
-      {/* table-1*/}
-      {/* --------------------------------------------------------------------------------*/}
-      <Col lg="12">
-        <ProjectTables />
-      </Col>
-      {/* --------------------------------------------------------------------------------*/}
-      {/* table-2*/}
-      {/* --------------------------------------------------------------------------------*/}
       <Col lg="12">
         <Card>
           <CardTitle tag="h6" className="border-bottom p-3 mb-0">
             <i className="bi bi-card-text me-2"> </i>
-            Table with Border
+            Data Pelanggan
           </CardTitle>
           <CardBody className="">
             <Table bordered>
