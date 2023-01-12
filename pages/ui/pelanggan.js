@@ -4,7 +4,7 @@ import TablePelanggan from '../../component/DataPel'
 // import AdminLayout from '../../../components/admin/AdminLayout';
 // import MahasiswaBykode_agen from '../../../components/admin/mahasiswa/MahasiswaBykode_agen';
 
-function datamahasiswa({ agens }) {
+function datapelanggan({ agens }) {
 
     // let hasil
     // { Array.isArray(data) ? hasil = data : hasil = [data] }
@@ -38,4 +38,4 @@ export async function getServerSideProps({ query }) {
 }
 
 
-export default datamahasiswa;
+export default datapelanggan;

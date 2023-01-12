@@ -77,12 +77,13 @@ const TablePelanggan = ({data}) => {
                             </td>
                             <td>
                                 <Link href={{
-                                    pathname: `/admin/mahasiswa-gql/transkrip`,
+                                    pathname: `/ui/produks`,
                                     query: {
                                         kode_agen:plg.attributes.kode_agen,
                                         nama:plg.attributes.nama,
-                                        angkatan:plg.attributes.angkatan,
-                                        nomor_hp:plg.attributes.nomor_hp
+                                        tanggal_daftar:plg.attributes.tanggal_daftar,
+                                        nomor_hp:plg.attributes.nomor_hp,
+                                        alamat:plg.attributes.alamat
                                     }
                                 }}>
                                     <a ><i className="bi bi-eye-fill me-2"> </i></a>

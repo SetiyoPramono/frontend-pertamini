@@ -35,8 +35,8 @@ const navigation = [
     icon: "bi bi-columns",
   },
   {
-    title: "Table",
-    href: "/ui/tables",
+    title: "Table Produk",
+    href: "/ui/card_produck",
     icon: "bi bi-layout-split",
   },
   {
