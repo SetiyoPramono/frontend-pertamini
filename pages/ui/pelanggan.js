@@ -1,6 +1,7 @@
 import React from 'react';
 // import DataPelanggan from '../../component/DataPelanggan'
 import TablePelanggan from '../../component/DataPel'
+import FullLayout from '../../src/layouts/FullLayout';
 // import AdminLayout from '../../../components/admin/AdminLayout';
 // import MahasiswaBykode_agen from '../../../components/admin/mahasiswa/MahasiswaBykode_agen';
 
@@ -11,11 +12,13 @@ function datapelanggan({ agens }) {
 
     //console.log(hasil)
     return (
-        <div>
+        <FullLayout>
+            <div>
                 <div className="container">
                     <TablePelanggan data={agens.data} />
                 </div>
-        </div>
+            </div>
+        </FullLayout>
     );
 }
 

@@ -2,12 +2,15 @@ import React from 'react';
 // import cardproduks from '../../component/cardproduks'
 import ProductPage from '../../component/CardProduk'
 import { ApolloClient, gql, InMemoryCache } from '@apollo/client'
+import FullLayout from '../../src/layouts/FullLayout';
 
 
 const Produks = ({ produks }) => {
     return (
         <>
-        <ProductPage data={produks.data} />;
+            <FullLayout>
+                <ProductPage data={produks.data} />;
+            </FullLayout>
         </>
     )
 };
@@ -15,14 +18,14 @@ const Produks = ({ produks }) => {
 export async function getServerSideProps({ query }) {
     // Fetch data from external API
     const kode_barang = query.kode_barang
-    
+
     let url = `http://localhost:1337/api/produks`
     if (typeof kode_barang === 'string') {
         url = `http://localhost:1337/api/produks?filters[kode_barang][$eq]=${kode_barang}`
     }
     // { typeof kode_barang === 'string' ? kode_barang = kode_barang : kode_barang = "" }
-    { typeof kode_barang === 'string'  }
-    
+    { typeof kode_barang === 'string' }
+
 
     const res = await fetch(url)
     const produks = await res.json()

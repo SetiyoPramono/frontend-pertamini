@@ -10,29 +10,9 @@ const navigation = [
     icon: "bi bi-speedometer2",
   },
   {
-    title: "Alert",
-    href: "/ui/alerts",
-    icon: "bi bi-bell",
-  },
-  {
-    title: "Badges",
-    href: "/ui/badges",
-    icon: "bi bi-patch-check",
-  },
-  {
-    title: "Buttons",
-    href: "/ui/buttons",
-    icon: "bi bi-hdd-stack",
-  },
-  {
     title: "Cards",
     href: "/ui/cards",
     icon: "bi bi-card-text",
-  },
-  {
-    title: "Grid",
-    href: "/ui/grid",
-    icon: "bi bi-columns",
   },
   {
     title: "Table Produk",
@@ -48,16 +28,6 @@ const navigation = [
     title: "Forms",
     href: "/ui/forms",
     icon: "bi bi-textarea-resize",
-  },
-  {
-    title: "Breadcrumbs",
-    href: "/ui/breadcrumbs",
-    icon: "bi bi-link",
-  },
-  {
-    title: "About",
-    href: "/about",
-    icon: "bi bi-people",
   },
 ];
 
@@ -95,23 +65,15 @@ const Sidebar = ({ showMobilemenu }) => {
             </NavItem>
           ))}
           <Button
-            color="secondary"
-            tag="a"
-            target="_blank"
-            className="mt-3"
-            href="https://www.wrappixel.com/templates/xtreme-next-js-free-admin-template/"
-          >
-            Download Free
-          </Button>
-          <Button
             color="danger"
             tag="a"
             target="_blank"
             className="mt-3"
-            href="https://www.wrappixel.com/templates/xtreme-react-redux-admin/?ref=33"
+            href=""
           >
-            Upgrade To Pro
+            Exit
           </Button>
+          
         </Nav>
       </div>
     </div>

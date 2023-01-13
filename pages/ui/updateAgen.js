@@ -1,10 +1,13 @@
 import React from 'react'
 import UpdateAgen from '../../component/admin/UpdateAgent'
+import FullLayout from '../../src/layouts/FullLayout'
 
 export default function () {
   return (
     <div>
-        <UpdateAgen/>
+      <FullLayout>
+        <UpdateAgen />
+      </FullLayout>
     </div>
   )
 }

@@ -1,26 +1,29 @@
 import React from 'react';
 // import DataPelanggan from '../../component/DataPelanggan'
 import TableProduk from '../../component/ProductByKode'
-import {ApolloClient, InMemoryCache, gql} from '@apollo/client';
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import FullLayout from '../../src/layouts/FullLayout';
 
 function dataproduk({ produks }) {
 
     return (
-        <div>
-            <div className="container">
-                <TableProduk data={produks.data} />
+        <FullLayout>
+            <div>
+                <div className="container">
+                    <TableProduk data={produks.data} />
+                </div>
             </div>
-        </div>
+        </FullLayout>
     );
 }
-export async function getServerSideProps({query}){
+export async function getServerSideProps({ query }) {
     const kode_agen = query.kode_agen
-    
+
     const client = new ApolloClient({
-        uri:'http://localhost:1337/graphql',
+        uri: 'http://localhost:1337/graphql',
         cache: new InMemoryCache()
     })
-    const{data} = await client.query({
+    const { data } = await client.query({
         query: gql`
         query getProduksByKode_agen($kode_agen: String!){
             produks(filters:{kode_agen:{eq:$kode_agen}}){
@@ -45,9 +48,9 @@ export async function getServerSideProps({query}){
             }
         }
         `,
-        variables: {kode_agen}
+        variables: { kode_agen }
     })
-    return {props:{ produks : data.produks}}
+    return { props: { produks: data.produks } }
 }
 
 
