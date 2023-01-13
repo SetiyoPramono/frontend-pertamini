@@ -3,17 +3,13 @@ import React from 'react';
 import TableProduk from '../../component/ProductByKode'
 import {ApolloClient, InMemoryCache, gql} from '@apollo/client';
 
-function datamahasiswa({ produks }) {
+function dataproduk({ produks }) {
 
-    // let hasil
-    // { Array.isArray(data) ? hasil = data : hasil = [data] }
-
-    //console.log(hasil)
     return (
         <div>
-                <div className="container">
-                    <TableProduk data={produks.data} />
-                </div>
+            <div className="container">
+                <TableProduk data={produks.data} />
+            </div>
         </div>
     );
 }
@@ -26,32 +22,34 @@ export async function getServerSideProps({query}){
     })
     const{data} = await client.query({
         query: gql`
-        query getProduksByKode_agen{
-            produks(filters:{agen:{kode_agen:{eq:"${kode_agen}"}}}){
-                data{
-                    id
-                    attributes{
-                        kode_barang
-                        nama
-                        deskripsi
-                        harga
-                        foto
-                        kategori{
-                            data{
-                                attributes{
-                                    kategori
-                                }
-                            }
-                        }
+        query getProduksByKode_agen($kode_agen: String!){
+            produks(filters:{kode_agen:{eq:$kode_agen}}){
+                kode_barang
+                nama
+                deskripsi
+                harga
+                foto{
+                    data{
+                        attributes{
+                            url
+                          }
                     }
+                }
+                kategori{
+                  data{
+                    attributes{
+                        kategori
+                      }
+                  }
                 }
             }
         }
-        `
+        `,
+        variables: {kode_agen}
     })
     return {props:{ produks : data.produks}}
 }
 
 
 
-export default datamahasiswa;
+export default dataproduk;

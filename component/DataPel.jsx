@@ -20,7 +20,7 @@ const TablePelanggan = ({data}) => {
             await client.mutate({
                 mutation: gql`
                 mutation{
-                    deleteMahasiswa(id:${id}){
+                  deleteAgen(id:${id}){
                         data{
                             id
                         }
@@ -33,7 +33,7 @@ const TablePelanggan = ({data}) => {
             console.log({message : error.message});
 
         }
-        router.push('admin/mahasiswa/datamahasiswa')
+        router.push('/ui/pelanggan')
     }
   return (
     <Row>
@@ -86,14 +86,14 @@ const TablePelanggan = ({data}) => {
                                         alamat:plg.attributes.alamat
                                     }
                                 }}>
-                                    <a ><i className="bi bi-eye-fill me-2"> </i></a>
+                                    <a ><i className="bi bi-eye-fill me-2">Lihat</i></a>
                                 </Link>
                             </td>
                             
                             <td>
                                 <div className="d-flex justify-content-between">
                                     
-                                    <Link href={`/admin/mahasiswa-gql/updatemahasiswa?id=${plg.id}&kode_agen=${plg.attributes.kode_agen}&nama=${plg.attributes.nama}&angkatan=${plg.attributes.angkatan}&nomor_hp=${plg.attributes.nomor_hp}`}
+                                    <Link href={`/ui/updateAgen?id=${plg.id}&kode_agen=${plg.attributes.kode_agen}&nama=${plg.attributes.nama}&tanggal_daftar=${plg.attributes.tanggal_daftar}&nomor_hp=${plg.attributes.nomor_hp}&alamat=${plg.alamat}`}
                                     >
                                         <a>Edit</a>
                                     </Link>

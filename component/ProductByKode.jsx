@@ -14,12 +14,12 @@ const TableProduks = ({ data }) => {
   const [message, setMessage] = useState(false)
   const router = useRouter()
 
-  async function hapusMahasiswaGql(id, kode_agen) {
+  async function hapusProduk(id, kode_barang) {
     try {
       await client.mutate({
         mutation: gql`
                 mutation{
-                    deleteMahasiswa(id:${id}){
+                    deleteProduk(id:${id}){
                         data{
                             id
                         }
@@ -27,11 +27,11 @@ const TableProduks = ({ data }) => {
                 }
                 `,
       })
-      alert(`Mahasiswa dengan kode_agen ${kode_agen} telah terhapus`)
+      alert(`Produk dengan kode_barang ${kode_barang} telah terhapus`)
     } catch (error) {
       console.log({ message: error.message })
     }
-    router.push('admin/mahasiswa/datamahasiswa')
+    router.push('/admin/product')
   }
   return (
     <Row>
@@ -60,7 +60,7 @@ const TableProduks = ({ data }) => {
                     <td>{prd.attributes.nama}</td>
                     <td>{prd.attributes.deskripsi}</td>
                     <td>{prd.attributes.harga}</td>
-                    <td>{prd.attributes.foto}</td>
+                    <td><img src={prd.attributes.foto.url} alt={prd.attributes.kode_barang} width="50" height="50" /></td>
                     <td>
                       {prd.attributes.kategori.data[0].attributes.kategori}
                     </td>
@@ -75,10 +75,8 @@ const TableProduks = ({ data }) => {
 
                         <button
                           className="btn btn-danger btn-sm"
-                          value={prd.kode_agen}
-                          onClick={(e) =>
-                            hapusMahasiswaGql(prd.id, prd.attributes.kode_agen)
-                          }
+                          value={prd.kodeBarang}
+                          onClick={(e) => hapusProdukGql(prd.id, prd.kodeBarang)}
                         >
                           Hapus
                         </button>
