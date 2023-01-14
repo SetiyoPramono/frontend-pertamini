@@ -7,12 +7,12 @@ import { ApolloClient, gql, InMemoryCache,  } from '@apollo/client';
 const UpdateAgen = () => {
     const [_kode_agen, setKode_agen] = useState('');
     const [_nama, setNama] = useState('');
-    const [_tanggalDaftar, setTanggalDaftar] = useState('');
-    const [_nomorhp, setNomor_hp] = useState('');
+    const [_tanggalDaftar, setTanggal] = useState('');
+    const [_nomor_hp, setNomor_hp] = useState('');
     const [_alamat, setAlamat] = useState('');
 
     const router = useRouter();
-    const { id, kode_agen, nama,nomor_hp,tanggalDaftar,alamat} = router.query;
+    const {  kode_agen, nama,nomor_hp,tanggalDaftar,alamat} = router.query;
 
     const client = new ApolloClient({
         uri: 'http://localhost:1337/graphql',
@@ -27,7 +27,7 @@ const UpdateAgen = () => {
             setNama(nama)
         }
         if (typeof tanggalDaftar == 'string') {
-            setTanggalDaftar(tanggalDaftar)
+            setTanggal(tanggalDaftar)
         }
         if (typeof nomor_hp == 'number') {
             setNomor_hp(nomor_hp)
@@ -56,7 +56,7 @@ const UpdateAgen = () => {
                         kode_agen: "${_kode_agen}",
                         nama: "${_nama}",
                         tanggal_daftar: "${_tanggalDaftar}",
-                        nomor_hp: "${_nomorhp}",
+                        nomor_hp: "${_nomor_hp}",
                         alamat: "${_alamat}"
                     })
                     {
@@ -92,10 +92,10 @@ const UpdateAgen = () => {
                     <div className="form-group mt-3">
                         <div className="row">
                             <div className="col">
-                                <input type="date" id="tanggalDaftar" className="form-control" placeholder="Tanggal" required="required" value={_tanggalDaftar} onChange={(e) => setTanggalDaftar(e.target.value)} />
+                                <input type="date" id="tanggalDaftar" className="form-control" placeholder="Tanggal" required="required" value={_tanggalDaftar} onChange={(e) => setTanggal(e.target.value)} />
                             </div>
                             <div className="col">
-                                <input type="text" id="nomor_hp" className="form-control" placeholder="nomor_hp" required="required" value={_nomorhp} onChange={(e) => setNomor_hp(e.target.value)} />
+                                <input type="text" id="nomor_hp" className="form-control" placeholder="nomor_hp" required="required" value={_nomor_hp} onChange={(e) => setNomor_hp(e.target.value)} />
                             </div>
                         </div>
                     </div>

@@ -93,7 +93,7 @@ const TablePelanggan = ({data}) => {
                             <td>
                                 <div className="d-flex justify-content-between">
                                     
-                                    <Link href={`/ui/updateAgen?id=${plg.id}&kode_agen=${plg.attributes.kode_agen}&nama=${plg.attributes.nama}&tanggal_daftar=${plg.attributes.tanggal_daftar}&nomor_hp=${plg.attributes.nomor_hp}&alamat=${plg.alamat}`}
+                                    <Link href={`/ui/updateAgen?id=${plg.id}&kode_agen=${plg.attributes.kode_agen}&nama=${plg.attributes.nama}&tanggal_daftar=${plg.attributes.tanggal_daftar}&nomor_hp=${plg.attributes.nomor_hp}&alamat=${plg.attributes.alamat}`}
                                     >
                                         <a>Edit</a>
                                     </Link>

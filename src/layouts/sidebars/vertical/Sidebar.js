@@ -20,13 +20,13 @@ const navigation = [
     icon: "bi bi-layout-split",
   },
   {
-    title: "Table",
+    title: "Table Pelanggan",
     href: "/ui/pelanggan",
     icon: "bi bi-layout-split",
   },
   {
-    title: "Forms",
-    href: "/ui/forms",
+    title: "Tambah Produk",
+    href: "/ui/createproduk",
     icon: "bi bi-textarea-resize",
   },
 ];
