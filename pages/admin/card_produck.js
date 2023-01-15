@@ -3,13 +3,16 @@ import React from 'react';
 import ProductPage from '../../component/CardProduk'
 import { ApolloClient, gql, InMemoryCache } from '@apollo/client'
 import FullLayout from '../../src/layouts/FullLayout';
+import Coba from '../../component/coba';
 
 
 const Produks = ({ produks }) => {
     return (
         <>
             <FullLayout>
+                
                 <ProductPage data={produks.data} />;
+
             </FullLayout>
         </>
     )
