@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { ApolloClient, gql, InMemoryCache, } from '@apollo/client';
+import Link from 'next/link';
 
 const Coba = ({ data }) => {
     const router = useRouter()
@@ -41,21 +42,24 @@ const Coba = ({ data }) => {
                         <thead>
                             <tr>
                                 {/* <th>Gambar</th> */}
+                                <th>Kode Barang</th>
                                 <th>Nama</th>
                                 <th>Harga</th>
                                 <th>Deskripsi</th>
-                                <th>Kode Barang</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {data.map((produks, idx) => (
                                 <tr key={idx}>
+                                    <td>{produks.attributes.kode_barang}</td>
                                     <td>{produks.attributes.nama}</td>
                                     <td>{produks.attributes.harga}</td>
                                     <td>{produks.attributes.deskripsi}</td>
-                                    <td>{produks.attributes.kode_barang}</td>
                                     <td>
+                                        <Link legacyBehavior
+                                            href={`/admin/updateproduct/?id=${produks.id}&kode_barang=${produks.attributes.kode_barang}&nama=${produks.attributes.nama}&harga=${produks.attributes.harga}&deskripsi=${produks.attributes.deskripsi}`}
+                                        ><button className="btn edit" title="Edit" data-toggle="tooltip"><i className="fa fa-pencil" />Edit</button></Link>
                                         <button className="btn btn-danger btn-sm" title="Delete" value={produks.attributes.kode_barang} onClick={(e) => hapusRestaurant(produks.id, produks.attributes.kode_barang)}><i className="fa fa-trash" />Hapus</button>
                                     </td>
 
