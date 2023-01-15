@@ -1,6 +1,23 @@
- 
+    /* .nav-item {
+        margin: 15px;
+        background-color: red;
+    } */
+    /* .background {
+        background-image: url('../../src/assets/images/users/gambar1.jpg');
+    } */
 
+    .nav-item {
+        margin-left: 10px;
+    }
     
+    li {
+        list-style: none;
+    }
+    li a {
+        text-decoration: none;
+        color: rgba(106, 0, 0, 0);
+        
+    }
     .card-sl {
         border-radius: 8px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
