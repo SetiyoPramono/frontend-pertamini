@@ -53,6 +53,7 @@ const CreateProduks = () => {
                 }`
       })
       alert("Penambahan data sukses")
+      router.push('/admin/card_produck')
       clearInput()
     } catch (error) {
       alert("gagal")
@@ -110,9 +111,6 @@ const CreateProduks = () => {
             value={deskripsi} 
             onChange={(e) => setDeskripsi(e.target.value)} />
           </div>
-          {/* <div className="form-group">
-                        <input type="text" id="harga" className="form-control" placeholder="Harga" value={harga} onChange={(e) => setHarga(e.target.value)} />
-                    </div> */}
           <div className="form-group text-center">
             <button type="submit" className="btn btn-lg btn-block rounded-0" id='demo'>Submit</button>
           </div>

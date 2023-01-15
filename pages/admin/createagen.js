@@ -1,18 +1,17 @@
 import React from 'react';
-import CreateProduks from '../../component/admin/CreateProduct';
-
+import CreateAgen from '../../component/createagen';
 import FullLayout from '../../src/layouts/FullLayout';
 
-function createproduk() {
+function CreatePelanggan() {
     return (
         <FullLayout>
             <div>
                 <div className="container">
-                   <CreateProduks /> 
+                    <CreateAgen />
                 </div>
             </div>
         </FullLayout>
     );
 }
 
-export default createproduk ;
+export default CreatePelanggan ;

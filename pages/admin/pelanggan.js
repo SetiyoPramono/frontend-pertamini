@@ -1,44 +1,49 @@
-import React from 'react';
-// import DataPelanggan from '../../component/DataPelanggan'
-import TablePelanggan from '../../component/DataPel'
-import FullLayout from '../../src/layouts/FullLayout';
-// import AdminLayout from '../../../components/admin/AdminLayout';
-// import MahasiswaBykode_agen from '../../../components/admin/mahasiswa/MahasiswaBykode_agen';
+import React from 'react'
+import FullLayout from '../../src/layouts/FullLayout'
+import { ApolloClient, gql, InMemoryCache, } from '@apollo/client';
+import DataPelanggan from '../../component/datapelanggan';
 
-function datapelanggan({ agens }) {
 
-    // let hasil
-    // { Array.isArray(data) ? hasil = data : hasil = [data] }
 
-    //console.log(hasil)
-    return (
-        <FullLayout>
-            <div>
-                <div className="container">
-                    <TablePelanggan data={agens.data} />
-                </div>
-            </div>
-        </FullLayout>
-    );
+export default function Home({ agens }) { 
+
+
+
+  return (
+    <div>
+      <FullLayout>
+        <DataPelanggan data={agens.data} />
+      </FullLayout>
+    </div>
+  )
 }
 
 export async function getServerSideProps({ query }) {
-    // Fetch data from external API
-    const kode_agen = query.kode_agen
-    //const url = `http://localhost:5000/mahasiswa/${kode_agen}`
-    let url = `http://localhost:1337/api/agens`
+  let nama = query.nama
+  { typeof nama === 'string' ? nama = nama : nama = "" }
+  const client = new ApolloClient({
+    uri: 'http://localhost:1337/graphql',
+    cache: new InMemoryCache()
 
-    if (typeof kode_agen === 'string') {
-        url = `http://localhost:1337/api/agens?filters[kode_agen][$eq]=${kode_agen}`
-    }
-    //{ kode_agen === undefined ? res = await fetch(url2) : res = await fetch(url) }
+  })
 
-    const res = await fetch(url)
-    const agens = await res.json()
-
-    // Pass data to the page via props
-    return { props: { agens } }
+  const { data } = await client.query({
+    query: gql`
+    query getAllAgen{
+        agens(filters:{nama:{containsi:"${nama}"}}){
+          data{
+            id
+            attributes{
+              kode_agen
+              nama
+              nomor_hp
+              alamat
+            }
+          }
+        }
+      }`
+  })
+  return { props: { agens: data.agens } }
 }
 
 
-export default datapelanggan;

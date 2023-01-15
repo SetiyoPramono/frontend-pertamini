@@ -2,7 +2,7 @@ import Head from "next/head";
 import "../styles/style.scss";
 import '../styles/layout/style.css'
 import "bootstrap/dist/css/bootstrap.css"
-import "bootstrap/dist/js/bootstrap.js"
+
 
 function MyApp({ Component, pageProps }) {
   return (

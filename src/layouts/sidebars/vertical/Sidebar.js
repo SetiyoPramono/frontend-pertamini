@@ -9,11 +9,11 @@ const navigation = [
     href: "/",
     icon: "bi bi-speedometer2",
   },
-  {
-    title: "Cards",
-    href: "/admin/cards",
-    icon: "bi bi-card-text",
-  },
+  // {
+  //   title: "Cards",
+  //   href: "/admin/cards",
+  //   icon: "bi bi-card-text",
+  // },
   {
     title: "Table Produk",
     href: "/admin/card_produck",
@@ -24,11 +24,7 @@ const navigation = [
     href: "/admin/pelanggan",
     icon: "bi bi-layout-split",
   },
-  {
-    title: "Tambah Produk",
-    href: "/admin/createproduk",
-    icon: "bi bi-textarea-resize",
-  },
+  
 ];
 
 const Sidebar = ({ showMobilemenu }) => {
