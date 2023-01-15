@@ -1,5 +1,6 @@
 import React from 'react';
-import CreateProduks from '../../component/admin/CreateProduct'
+import CreateProduks from '../../component/admin/CreateProduct';
+
 import FullLayout from '../../src/layouts/FullLayout';
 
 function createproduk() {
@@ -12,7 +13,7 @@ function createproduk() {
         <FullLayout>
             <div>
                 <div className="container">
-                    <CreateProduks/>
+                   <CreateProduks /> 
                 </div>
             </div>
         </FullLayout>
