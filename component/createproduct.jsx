@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { ApolloClient, gql, InMemoryCache, } from '@apollo/client';
 import Link from 'next/link';
 
-const Coba = ({ data }) => {
+const CreateProduct = ({ data }) => {
     const router = useRouter()
 
     const client = new ApolloClient({
@@ -73,4 +73,4 @@ const Coba = ({ data }) => {
     );
 }
 
-export default Coba;
+export default CreateProduct;

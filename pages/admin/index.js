@@ -1,10 +1,7 @@
 import React from 'react'
-import Coba from '../../component/coba'
-import Blog from '../../src/components/dashboard/Blog'
-import SalesChart from '../../src/components/dashboard/SalesChart'
-import TopCards from '../../src/components/dashboard/TopCards'
 import FullLayout from '../../src/layouts/FullLayout'
 import { ApolloClient, gql, InMemoryCache, } from '@apollo/client';
+import CreateProduct from '../../component/createproduct'
 
 
 
@@ -15,7 +12,7 @@ export default function Home({ produks }) {
   return (
     <div>
       <FullLayout>
-        <Coba data={produks.data} />
+        <CreateProduct data={produks.data} />
       </FullLayout>
     </div>
   )
