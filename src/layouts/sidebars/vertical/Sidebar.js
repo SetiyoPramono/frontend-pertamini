@@ -11,22 +11,22 @@ const navigation = [
   },
   {
     title: "Cards",
-    href: "/ui/cards",
+    href: "/admin/cards",
     icon: "bi bi-card-text",
   },
   {
     title: "Table Produk",
-    href: "/ui/card_produck",
+    href: "/admin/card_produck",
     icon: "bi bi-layout-split",
   },
   {
     title: "Table Pelanggan",
-    href: "/ui/pelanggan",
+    href: "/admin/pelanggan",
     icon: "bi bi-layout-split",
   },
   {
     title: "Tambah Produk",
-    href: "/ui/createproduk",
+    href: "/admin/createproduk",
     icon: "bi bi-textarea-resize",
   },
 ];
