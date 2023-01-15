@@ -4,15 +4,14 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { ApolloClient, gql, InMemoryCache,  } from '@apollo/client';
 
-const UpdateAgen = () => {
-    const [_kode_agen, setKode_agen] = useState('');
+const UpdateRestaurant = () => {
+    const [_kdRst, setKdRst] = useState('');
     const [_nama, setNama] = useState('');
-    const [_tanggalDaftar, setTanggal] = useState('');
-    const [_nomor_hp, setNomor_hp] = useState('');
-    const [_alamat, setAlamat] = useState('');
+    const [_deskripsi, setDeskripsi] = useState('');
+    const [_harga, setHarga] = useState('');
 
     const router = useRouter();
-    const {  kode_agen, nama,nomor_hp,tanggalDaftar,alamat} = router.query;
+    const { id, kdRst, nama, deskripsi} = router.query;
 
     const client = new ApolloClient({
         uri: 'http://localhost:1337/graphql',
@@ -20,29 +19,25 @@ const UpdateAgen = () => {
     })
 
     useEffect(() => {
-        if (typeof kode_agen == 'string') {
-            setKode_agen(kode_agen);
+        if (typeof kdRst == 'string') {
+            setKdRst(kdRst);
         }
         if (typeof nama == 'string') {
             setNama(nama)
         }
-        if (typeof tanggalDaftar == 'string') {
-            setTanggal(tanggalDaftar)
+        if (typeof deskripsi == 'string') {
+            setDeskripsi(deskripsi)
         }
-        if (typeof nomor_hp == 'number') {
-            setNomor_hp(nomor_hp)
-        }
-        if (typeof alamat == 'string') {
-            setAlamat(alamat)
-        }
-    }, [kode_agen, nama, tanggalDaftar, alamat])
+        // if (typeof harga == 'number') {
+        //     setHarga(harga)
+        // }
+    }, [kdRst, nama, deskripsi])
 
     const clearInput = () => {
-        setKode_agen('')
+        setKdRst('')
         setNama('')
-        setTanggalDaftar('')
-        setNomor_hp('')
-        setAlamat('')
+        setDeskripsi('')
+        // setHarga('')
     }
 
     async function submitHandler(e) {
@@ -51,13 +46,11 @@ const UpdateAgen = () => {
             await client.mutate({
                 mutation:gql `
                 mutation{
-                    UpdateAgen(id:${id},
+                    updateRestaurant(id:${id},
                     data:{
-                        kode_agen: "${_kode_agen}",
+                        kdRst: "${_kdRst}",
                         nama: "${_nama}",
-                        tanggal_daftar: "${_tanggalDaftar}",
-                        nomor_hp: "${_nomor_hp}",
-                        alamat: "${_alamat}"
+                        deskripsi: "${_deskripsi}",
                     })
                     {
                         data {
@@ -67,7 +60,7 @@ const UpdateAgen = () => {
                 }`
             })
             alert("Update data sukses")
-            router.push('/ui/pelanggan')
+            // router.push('/admin')
             clearInput()
         } catch (e) {
             // throw Error(e.message)
@@ -78,33 +71,25 @@ const UpdateAgen = () => {
         <div>
             <div className="produk-form mt-5">
                 <form onSubmit={submitHandler}>
-                    <h2>Update Agen</h2>
+                    <h2>Update Restaurant</h2>
                     <div className="form-group">
                         <div className="row">
                             <div className="col">
-                                <input type="text" id="kode_agen" className="form-control" placeholder="Kode Restaurant" required="required" value={_kode_agen} onChange={(e) => setKode_agen(e.target.value)} />
+                                <input type="text" id="kdRst" className="form-control" placeholder="Kode Restaurant" required="required" value={_kdRst} onChange={(e) => setKdRst(e.target.value)} />
                             </div>
                             <div className="col">
                                 <input type="text" id="nama" className="form-control" placeholder="Nama" required="required" value={_nama} onChange={(e) => setNama(e.target.value)} />
                             </div>
                         </div>
                     </div>
-                    <div className="form-group mt-3">
-                        <div className="row">
-                            <div className="col">
-                                <input type="date" id="tanggalDaftar" className="form-control" placeholder="Tanggal" required="required" value={_tanggalDaftar} onChange={(e) => setTanggal(e.target.value)} />
-                            </div>
-                            <div className="col">
-                                <input type="text" id="nomor_hp" className="form-control" placeholder="nomor_hp" required="required" value={_nomor_hp} onChange={(e) => setNomor_hp(e.target.value)} />
-                            </div>
-                        </div>
+                    <div className="form-group">
+                        <input type="text" id="deskripsi" className="form-control" placeholder="Deskripsi" value={_deskripsi} onChange={(e) => setDeskripsi(e.target.value)} />
                     </div>
-                    
-                    <div className="form-group mt-3">
-                        <input type="text" id="alamat" className="form-control" placeholder="nomor_hp" value={_alamat} onChange={(e) => setAlamat(e.target.value)} />
-                    </div>
+                    {/* <div className="form-group">
+                        <input type="text" id="harga" className="form-control" placeholder="Harga" value={_harga} onChange={(e) => setHarga(e.target.value)} />
+                    </div> */}
                     <div className="form-group text-center">
-                        <button type="submit" className="btn btn-lg btn-block rounded-1" id='demo'>Submit</button>
+                        <button type="submit" className="btn btn-lg btn-block rounded-0" id='demo'>Submit</button>
                     </div>
                 </form>
             </div>
@@ -112,4 +97,4 @@ const UpdateAgen = () => {
     );
 }
 
-export default UpdateAgen;
+export default UpdateRestaurant;

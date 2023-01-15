@@ -1,6 +1,33 @@
-
+import { useRouter } from 'next/router'
+import { ApolloClient, gql, InMemoryCache, } from '@apollo/client';
 
 const Coba = ({ data }) => {
+    const router = useRouter()
+
+    const client = new ApolloClient({
+        uri: 'http://localhost:1337/graphql',
+        cache: new InMemoryCache()
+    })
+    async function hapusRestaurant(id, kdRst) {
+        // e.preventDefault()
+        try {
+            await client.mutate({
+                mutation: gql`
+                mutation{
+                    deleteProduk(id:${id}){
+                      data{
+                        id
+                      }
+                    }
+                  }`
+            })
+
+            alert(`Restaurant dengan kode ${kode_barang} telah terhapus`)
+        } catch (error) {
+            console.log({ message: error.message });
+        }
+        router.push('/admin')
+    }
     return (
         <>
             <div className="table-responsive">
@@ -18,6 +45,7 @@ const Coba = ({ data }) => {
                                 <th>Harga</th>
                                 <th>Deskripsi</th>
                                 <th>Kode Barang</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,8 +55,10 @@ const Coba = ({ data }) => {
                                     <td>{produks.attributes.harga}</td>
                                     <td>{produks.attributes.deskripsi}</td>
                                     <td>{produks.attributes.kode_barang}</td>
-                                    <img src={produks.attributes.foto.data.attributes.url}/>
-                                    
+                                    <td>
+                                        <button className="btn btn-danger btn-sm" title="Delete" value={produks.attributes.kode_barang} onClick={(e) => hapusRestaurant(produks.id, produks.attributes.kode_barang)}><i className="fa fa-trash" />Hapus</button>
+                                    </td>
+
                                 </tr>
                             ))}
                         </tbody>

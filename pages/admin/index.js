@@ -6,7 +6,12 @@ import TopCards from '../../src/components/dashboard/TopCards'
 import FullLayout from '../../src/layouts/FullLayout'
 import { ApolloClient, gql, InMemoryCache, } from '@apollo/client';
 
+
+
 export default function Home({ produks }) {
+
+
+
   return (
     <div>
       <FullLayout>
@@ -40,6 +45,7 @@ export async function getServerSideProps({ query }) {
                 data{
                   attributes{
                     url
+                    name
                     }
                   }
                 }
@@ -50,3 +56,5 @@ export async function getServerSideProps({ query }) {
   })
   return { props: { produks: data.produks } }
 }
+
+
