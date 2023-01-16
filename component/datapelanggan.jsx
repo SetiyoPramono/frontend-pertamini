@@ -98,7 +98,8 @@ const DataPelanggan = ({ data }) => {
                                                                 <th className="sortable">Nama</th>
                                                                 <th className="sortable">Nomor Hp</th>
                                                                 <th className="sortable">Alamat</th>
-                                                                <th className="sortable">Action</th>
+                                                                <th className="sortable">Lihat</th>
+                                                             <th className="sortable">Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -108,6 +109,11 @@ const DataPelanggan = ({ data }) => {
                                                                     <td className="text-nowrap align-middle">{agens.attributes.nama}</td>
                                                                     <td className="text-nowrap align-middle">{agens.attributes.nomor_hp}</td>
                                                                     <td className="text-nowrap align-middle">{agens.attributes.alamat}</td>
+                                                                    <td className="text-nowrap align-middle">
+                                                                        <Link legacyBehavior
+                                                                                href={`/admin/detailagen/${agens.attributes.kode_agen}`}
+                                                                            ><button className='btn btn-primary mr-2'><i className="bi bi-eye-fill" />
+</button></Link></td>
                                                                     <td className="text-center align-middle">
                                                                         <div className="align-top">
                                                                             <Link legacyBehavior
