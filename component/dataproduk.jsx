@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { ApolloClient, gql, InMemoryCache, } from '@apollo/client';
 import Link from 'next/link';
+import FilterProduct from './filterproduct';
 
 const DataProduk = ({ data }) => {
     const router = useRouter()
@@ -76,9 +77,7 @@ const DataProduk = ({ data }) => {
                                 <div className="col mb-3">
                                     <div className="e-panel card">
                                         <div className="card-body">
-                                            {/* <div className="card-title">
-                                            <h6 className="mr-2"><span>Admin</span></h6>
-                                        </div> */}
+                                            <FilterProduct />
                                             <div className="d-flex bd-highlight">
                                                 <div className="p-2 flex-grow-1 bd-highlight">Admin</div>
                                                 <div className="p-2 bd-highlight">
