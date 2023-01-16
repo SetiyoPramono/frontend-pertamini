@@ -77,12 +77,15 @@ const Editagen = () => {
     }
     return (
         <div>
-            <p>{kode_agen}</p>
-            <p>{_kode_agen}coba</p>
+            <div className="card">
+                <h1 className="">Cek Data Agen</h1>
+                <h2>Nama Agen :{nama}</h2>
+            <h2>Kode Agen:{_kode_agen}</h2>
+            </div>
             <div className="produk-form mt-5">
                 <form onSubmit={submitHandler}>
                     <h2>Update Agens</h2>
-                    <div className="form-group">
+                    <div className="form-group mb-3">
                         <div className="row">
                             <div className="col">
                                 <input 
@@ -115,7 +118,7 @@ const Editagen = () => {
                         </div>
                     </div>
                     <div className="form-group">
-                        <input 
+                        <textarea 
                         type="text" 
                         id="alamat" 
                         className="form-control" 
@@ -125,7 +128,7 @@ const Editagen = () => {
                     </div>
                     
                     <div className="form-group text-center">
-                        <button type="submit" className="btn btn-lg btn-block rounded-0" id='demo'>Submit</button>
+                        <button type="submit" className="btn btn-primary mt-2 btn-block rounded-4" id='demo'>Submit</button>
                     </div>
                 </form>
             </div>

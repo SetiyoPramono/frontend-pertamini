@@ -2,8 +2,7 @@ import React from 'react'
 import FullLayout from '../../src/layouts/FullLayout'
 import { ApolloClient, gql, InMemoryCache, } from '@apollo/client';
 import DataPelanggan from '../../component/datapelanggan';
-
-
+import {getSession,useSession} from 'next-auth/react'
 
 export default function Home({ agens }) { 
 
@@ -18,8 +17,20 @@ export default function Home({ agens }) {
   )
 }
 
-export async function getServerSideProps({ query }) {
-  let nama = query.nama
+export async function getServerSideProps(context) {
+  const session=await getSession(context);
+    console.log(session);
+
+    // cek if session exists or not,if not,redirect
+    if(session== null){
+        return{
+            redirect:{
+                destination: '/auth/not-authenticated',
+                permanent: true,
+            }
+        }
+    }
+  let nama = context.nama
   { typeof nama === 'string' ? nama = nama : nama = "" }
   const client = new ApolloClient({
     uri: 'http://localhost:1337/graphql',

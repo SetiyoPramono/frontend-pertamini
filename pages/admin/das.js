@@ -1,14 +1,16 @@
 import React from 'react'
 import FullLayout from '../../src/layouts/FullLayout'
 import { ApolloClient, gql, InMemoryCache, } from '@apollo/client';
-
+import SalesChart from '../../src/components/dashboard/SalesChart'
+import TopCards from '../../src/components/dashboard/TopCards'
 import DataProduk from '../../component/dataproduk';
 
 export default function Home({ produks }) {
   return (
     <div>
     <FullLayout>
-      
+      <SalesChart/>
+      <TopCards/>
         <DataProduk data={produks.data} />
 
     </FullLayout>

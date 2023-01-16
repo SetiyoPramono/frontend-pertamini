@@ -78,12 +78,17 @@ const UpdateProduct = () => {
     }
     return (
         <div>
-            <p>{kode_barang}</p>
-            <p>{_kode_barang}</p>
+            <div className="card">
+                <div className="card-header">
+                    <h1>Product</h1>
+                    <p>Kode barang :{kode_barang}</p>
+            <p>Nama Barang : {nama}</p>
+                </div>
+            </div>
             <div className="produk-form mt-5">
                 <form onSubmit={submitHandler}>
-                    <h2>Update Restaurant</h2>
-                    <div className="form-group">
+                    <h2>Update Product</h2>
+                    <div className="form-group mb-3">
                         <div className="row">
                             <div className="col">
                                 <input 
@@ -118,7 +123,7 @@ const UpdateProduct = () => {
                         </div>
                     </div>
                     <div className="form-group">
-                        <input 
+                        <textarea 
                         type="text" 
                         id="deskripsi" 
                         className="form-control" 

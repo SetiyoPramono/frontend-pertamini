@@ -62,6 +62,7 @@ const CreateAgen = () => {
     }
     return (
         <div>
+            <div className="card p-3">
             <div className="produk-form mt-5">
                 <form onSubmit={submitHandler}>
                     <h2>Add Agen</h2>
@@ -88,7 +89,12 @@ const CreateAgen = () => {
                                     value={nama}
                                     onChange={(e) => setNama(e.target.value)} />
                             </div>
-                            <div className="col">
+                            
+                        </div>
+                    </div>
+                    <div className="form-group mt-3">
+                    <div className="row">
+                        <div className="col">
                                 <input
                                     type="number"
                                     id="nomorhp"
@@ -98,9 +104,7 @@ const CreateAgen = () => {
                                     value={nomorhp}
                                     onChange={(e) => setNomorHp(e.target.value)} />
                             </div>
-                        </div>
-                    </div>
-                    <div className="form-group">
+                        <div className="col">
                         <input
                             type="text"
                             id="alamat"
@@ -108,12 +112,15 @@ const CreateAgen = () => {
                             placeholder="alamat"
                             value={alamat}
                             onChange={(e) => setAlamat(e.target.value)} />
+                        </div>
+                    </div>
                     </div>
 
                     <div className="form-group text-center">
                         <button type="submit" className="btn btn-lg btn-block rounded-0" id='demo'>Submit</button>
                     </div>
                 </form>
+            </div>
             </div>
         </div>
     );

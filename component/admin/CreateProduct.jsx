@@ -64,17 +64,20 @@ const CreateProduks = () => {
   return (
     <div>
       <p id="demo">{kode_barang}</p>
-      <div className="produk-form mt-5">
+      <div className="card p-2">
+        <div className="produk-form mt-5">
         <form onSubmit={submitHandler}>
-          <h2>Add Restaurant</h2>
-          <div className="form-group">
+          <div className="card-header text-center">
+          <h2>Add Barang</h2>
+          </div>
+          <div className="form-group mb-3">
             <div className="row">
               <div className="col">
                 <input
                   type="text"
                   id="kode_barang"
                   className="form-control"
-                  placeholder="Kode Restaurant"
+                  placeholder="Kode Barang"
                   required="required" 
                   value={kode_barang}
                   onChange={(e) => setKodeBarang(e.target.value)} />
@@ -115,6 +118,7 @@ const CreateProduks = () => {
             <button type="submit" className="btn btn-lg btn-block rounded-0" id='demo'>Submit</button>
           </div>
         </form>
+      </div>
       </div>
     </div>
   );

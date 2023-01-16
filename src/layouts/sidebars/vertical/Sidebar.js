@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 const navigation = [
   {
     title: "Dashboard",
-    href: "/",
+    href: "/admin/das",
     icon: "bi bi-speedometer2",
   },
   // {
@@ -63,9 +63,8 @@ const Sidebar = ({ showMobilemenu }) => {
           <Button
             color="danger"
             tag="a"
-            target="_blank"
             className="mt-3"
-            href=""
+            href="/"
           >
             Exit
           </Button>

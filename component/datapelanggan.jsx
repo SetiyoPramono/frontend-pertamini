@@ -112,7 +112,7 @@ const DataPelanggan = ({ data }) => {
                                                                     <td className="text-center align-middle">
                                                                         <div className="align-top">
                                                                             <Link legacyBehavior
-                                                                                href={`/admin/updateagen/?id=${agens.id}&kode_agen=${agens.attributes.kode_agen}&nama=${agens.attributes.nama}&nomor_hp=${agens.attributes.nomor_hp}&alamat=${agens.attributes.alamat}`}
+                                                                                href={`/admin/updateAgen/?id=${agens.id}&kode_agen=${agens.attributes.kode_agen}&nama=${agens.attributes.nama}&nomor_hp=${agens.attributes.nomor_hp}&alamat=${agens.attributes.alamat}`}
                                                                             ><button className='btn btn-primary mr-2'>Edit</button></Link>
 
                                                                             <button className='btn btn-danger' value={agens.attributes.kode_agen} onClick={(e) => hapusAgen(agens.id, agens.attributes.kode_agen)} >Hapus</button>

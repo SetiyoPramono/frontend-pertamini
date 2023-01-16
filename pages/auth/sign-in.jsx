@@ -1,10 +1,27 @@
-import React from 'react'
+import Head from "next/head";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 import Image from 'next/image'
-import Logopertamini from "../src/assets/images/logos/logopertamina2.svg"
-import { Link } from 'react-feather'
+import Logopertamini from "../../src/assets/images/logos/logopertamina2.svg"
+// import UserLayout from "../../components/user/UserLayout";
 
-export default function FormLogin() {
-    return (
+export default function SignIn(){
+    const router = useRouter();
+
+    const onSubmit = async(e)=>{
+        e.preventDefault();
+        const result = await signIn('credentials', {
+            redirect: false,
+            email: e.target.email.value,
+            password: e.target.password.value,
+        });
+        if (result.ok){
+            router.replace('/');
+            return;
+        }
+        alert('Credential is not valid');
+    };
+    return(
         <div>
             <section className="h-100" >
                 <div className="container h-100">
@@ -17,7 +34,7 @@ export default function FormLogin() {
                             <div className="card shadow-lg">
                                 <div className="card-body p-5">
                                     <h1 className="fs-4 card-title fw-bold mb-4">Login</h1>
-                                    <form  className="needs-validation" noValidate autoComplete="off" onSubmit={onSubmit}>
+                                    <form  className="needs-validation"  onSubmit={onSubmit}>
                                         <div className="mb-3">
                                             <label className="mb-2 text-muted" htmlFor="email">E-Mail Address</label>
                                             <input id="email" type="email" className="form-control" name="email"  />
@@ -55,5 +72,5 @@ export default function FormLogin() {
             </section>
 
         </div>
-    )
+    );
 }
