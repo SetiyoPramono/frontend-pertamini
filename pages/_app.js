@@ -1,13 +1,12 @@
 import Head from "next/head";
 import "../styles/style.scss";
-// <<<<<<< HEAD
+
 import '../styles/layout/style.css'
 import "bootstrap/dist/css/bootstrap.css"
 
 import '../styles/layout/style.css';
 import "bootstrap/dist/css/bootstrap.css";
 import {SessionProvider} from 'next-auth/react'
-// >>>>>>> 942996b2b5c6b72af0014d5714d082acc6fbdd44
 
 function MyApp({ Component, pageProps: {session, ...pageProps} }) {
   return (
