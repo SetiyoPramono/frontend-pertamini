@@ -28,7 +28,7 @@ const DataProduk = ({ data }) => {
         } catch (error) {
             console.log({ message: error.message });
         }
-        router.push('/admin')
+        router.push('/admin/card_produck')
     }
     return (
         <>

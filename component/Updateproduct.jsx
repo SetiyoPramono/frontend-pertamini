@@ -67,7 +67,7 @@ const UpdateProduct = () => {
                   }`
             })
             alert("Update data sukses")
-            router.push('/admin')
+            router.push('/admin/card_produck')
             clearInput()
         } catch (e) {
             // throw Error(e.message)
