@@ -1,8 +1,8 @@
 import React from 'react'
 import FullLayout from '../../src/layouts/FullLayout'
 import { ApolloClient, gql, InMemoryCache, } from '@apollo/client';
-
 import DataProduk from '../../component/dataproduk';
+
 
 export default function Home({ produks }) {
   return (

@@ -12,7 +12,7 @@ export default function AgenProduk({ dataAgen }) {
                 <h5 className="fw-bolder fs-1">Kode Agen :{dataAgen.kode_agen}</h5>
                 <h5 className="fw-bolder fs-1">Nama Agen :{dataAgen.nama}</h5>
                 <p className="fw-display" style={{ fontSize: "1.2rem" }}> Alamat :{dataAgen.alamat}</p>
-                <button className="btn btn-danger"><a href="pelanggan">Back</a></button>
+                <button className="btn btn-danger"><a href="/admin/das">Back</a></button>
             </div>
                 </div>
             </div>
